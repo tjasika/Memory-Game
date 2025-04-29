@@ -38,6 +38,30 @@ header {
     font-size: 50px;
 }
 
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+
+header a {
+    text-decoration: none;
+    color: #F6F1DE;
+}
+
+.login-container a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #8AB2A6;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 #play-btn {
     padding: 10px;
     width: 170px;
