@@ -15,10 +15,12 @@
             <h1>Log in</h1>
             <form class="login-form" action="/login" method="post">
                 <label>Username</label>
-                <input type="text" name="username">
+                <input type="text" name="username" required>
                 <label>Password</label>
-                <input type="password" name="password">
+                <input type="password" name="password" required>
+                <button class="submit-btn" type="submit">Log In</button>
             </form>
+            <%= err !== undefined ? err : "" %>
             <p>Don't have an account? <a class="a-login" href="/signup">Sign Up</a></p>
             <a class="a-login" href="/">Back</a>
         </div>
