@@ -60,6 +60,7 @@ header {
     align-items: center;
     gap: 0;
     height: 100px;
+    margin-top: 30px;
 }
 
 .login-container p  {
