@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+    --color1: #222023;
+    --color2: #522a6f;
+    --color3: #faeadd;
+    --color4: #f29cb7;
+    --color5: #fbcf4f;
+    --color6: #ddaaff;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -8,8 +17,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #3E3F5B;
-    color: #F6F1DE;
     overflow: hidden;
 }
 
@@ -24,18 +31,26 @@ header {
 }
 
 .container {
-    padding: 20px;
+    padding-top: 60px;
     width: 80%;
     height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
 }
 
 .container h1 {
-    font-size: 50px;
+    margin: 0;
+    font-size: 70px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-container {
@@ -44,17 +59,20 @@ header {
     justify-content: center;
     align-items: center;
     gap: 0;
+    height: 100px;
+}
+
+.login-container p  {
+    margin: 0;
 }
 
 header a {
     text-decoration: none;
-    color: #F6F1DE;
 }
 
 .login-container a {
     text-decoration: none;
     font-weight: 600;
-    color: #8AB2A6;
 }
 
 a:hover {
@@ -68,15 +86,11 @@ a:hover {
     font-size: 20px;
     font-weight: 600;
     font-family: "Poppins";
-    color: #3E3F5B;
-    background-color: #F6F1DE;
-    border: 3px solid #F6F1DE;
+    border: 3px solid;
     border-radius: 50px;
 }
 
 #play-btn:hover {
-    color:#F6F1DE;
-    background-color: #3E3F5B;
     cursor: pointer;
     transition: 0.4s;
 }
