@@ -55,7 +55,7 @@ header {
     align-items: center;
 }
 
-.login-container {
+.text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,7 +65,7 @@ header {
     margin-top: 30px;
 }
 
-.login-container p  {
+.text-container p  {
     margin: 0;
 }
 
@@ -74,7 +74,7 @@ header a {
     color: var(--color3);
 }
 
-.login-container a {
+.text-container a {
     text-decoration: none;
     font-weight: 600;
     color: var(--color2);
@@ -104,3 +104,48 @@ a:hover {
 }
 
 /*Log in and sign up pages*/
+.login-container {
+    padding: 20px;
+    width: 600px;
+    height: 400px;
+    background-color: var(--color3);
+    color: var(--color1);
+    border-radius: 20px;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container h1 {
+    color: var(--color1);
+    font-size: 40px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 70%;
+}
+
+.a-login {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color4);
+}
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: 1.5px solid var(--color1);
+    padding: 5px;
+    font-family: "Poppins";
+}
+
+input:focus {
+    border: 2px solid var(--color4);
+    color: var(--color4);
+}

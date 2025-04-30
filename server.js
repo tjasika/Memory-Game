@@ -20,6 +20,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.json());                            
 app.use(express.urlencoded({ extended: true }));
 
+/* Get handlers */
 app.get('/', (req, res)=> {
     res.render('index.ejs', {err: "", feedback: ""});
 });
@@ -39,6 +40,8 @@ app.get('/game', (req, res)=> {
 app.get('/scoreboard', (req, res)=> {
     res.render('scoreboard.ejs', {err: "", feedback: ""});
 });
+
+/* Post handlers */
 
 app.listen(4000, ()=> {
     console.log('App listening on port 4000...');

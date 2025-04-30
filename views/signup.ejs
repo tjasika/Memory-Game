@@ -11,14 +11,17 @@
             <a href="/scoreboard">Scoreboard</a>
             <a href="/login">Log In</a>
         </header>
-        <h1>Sign Up</h1>
-        <form action="/signup" method="post">
-            <label>Username</label>
-            <input type="text" name="username">
-            <label>Password</label>
-            <input type="password" name="password">
-        </form>
-        <p>Already have an account? <a href="/login">Log In</a></p>
-        <a href="/">Back</a>
+        <div class="login-container">
+            <h1>Sign Up</h1>
+            <form class="login-form" action="/signup" method="post">
+                <label>Username</label>
+                <input type="text" name="username">
+                <label>Password</label>
+                <input type="password" name="password">
+            </form>
+        <p>Already have an account? <a class="a-login" href="/login">Log In</a></p>
+        <a class="a-login" href="/">Back</a>
+        </div>
+        
     </body>
 </html>
