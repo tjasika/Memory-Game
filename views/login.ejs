@@ -14,10 +14,12 @@
         <div class="login-container">
             <h1>Log in</h1>
             <form class="login-form" action="/login" method="post">
-                <label>Username</label>
-                <input type="text" name="username" required>
-                <label>Password</label>
-                <input type="password" name="password" required>
+                <div class="inputs">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
                 <button class="submit-btn" type="submit">Log In</button>
             </form>
             <%= err !== undefined ? err : "" %>

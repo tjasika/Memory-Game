@@ -9,7 +9,11 @@
     <body>
         <header>
             <a href="/scoreboard">Scoreboard</a>
-            <a href="/login">Log In</a>
+            <% if (username) { %>
+                <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/login">Log In</a>
+            <% } %>
         </header>
         <div class="container">
             <div class="title-container">
@@ -17,12 +21,17 @@
                  <p>Put your memory to the test - flip, match and win!</p>
             </div>
             <div class="btn-container">
-                <button id="play-btn">Play</button>
+                <button id="play-btn"><a href="/game">Play</a></button>
             </div>
-            <div class="text-container">
-                 <p><a href="/login">Log in</a> to keep score</p>
-                <p>or <a href="/signup">sign up</a> if you don't have an account.</p>
-            </div> 
+            <% if (!username) { %>
+                <div class="text-container">
+                    <p><a href="/login">Log in</a> to keep score</p>
+                   <p>or <a href="/signup">sign up</a> if you don't have an account.</p>
+               </div> 
+            <% } %>
+            <% if (username) { %>
+                <p>Are you ready to play, <%= username %> ?</p>
+            <% } %>
         </div>  
     </body>
 </html>

@@ -22,6 +22,12 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+/* For logged in */
+app.use((req, res, next) => {
+    res.locals.username = req.session.loggedin ? req.session.username : null;   //makes the logged-in username a global variable
+    next();
+});
+
 app.set("view engine", "ejs");          
 app.use(express.static('public'));     
 
@@ -92,6 +98,51 @@ app.post('/signup', (req, res)=> {
             }
         }
     )
+});
+
+app.post('/login', (req, res)=> {
+	const data = req.body;
+	pool.query (
+		`SELECT * FROM User WHERE Username = ?`, [data.username], (err, response)=>{
+			if(err) {
+				return res.render("login.ejs", {err: err.message, feedback: ""});
+			}
+			
+			if (response.length > 0) {
+                const user = response[0];
+				console.log('Data.password:', data.password);
+				console.log('User.Password:', user.Password);
+                bcrypt.compare(data.password, user.Password, (err, isMatch) => {
+                    if (err) {
+                        return res.render("login.ejs", { err: err.message, feedback: "" });
+                    }
+    
+                    if (isMatch) {
+                        req.session.loggedin = true;
+                        req.session.username = user.Username;
+                        req.session.userId = user.ID;
+    
+                        return res.redirect('/');
+                    } else {
+                        res.render("login.ejs", { err: "Incorrect username or password", feedback: "" });
+                    }
+                });
+    
+            } else {
+                res.render("login.ejs", { err: "Incorrect username or password", feedback: "" });
+            }
+		}
+	);
+});
+
+
+app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.send("Error logging out");
+        }
+        res.redirect("/login");
+    });
 });
 
 
