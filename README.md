@@ -10,4 +10,5 @@ Though visual appearance wasn't my main priority, I decided to style it in a 'sp
 
 ### User authentification
 For this project, I kept the user authentication simple — players just need a unique username and password. When signing up (via the POST sign-up route), the code first checks that both the username and password are provided. Then, it verifies whether a user with the same username already exists. If those checks pass, it hashes the password using bcrypt and saves the username, hashed password, and high score in the database. At each step, the code also checks for errors, and if anything goes wrong, it renders the signup.ejs page again with an error message.
+
 ![Screenshot of the log-in interface](assets/screenshot1.png)
