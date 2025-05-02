@@ -89,6 +89,7 @@ app.post('/signup', (req, res)=> {
 								if(err) {
 									return res.render('signup.ejs', {err: err.message, feedback: ""});
 								} else {
+                                    console.log('User added successfully.');
 									res.redirect('/login');
 								}
 							}
