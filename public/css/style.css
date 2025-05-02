@@ -237,7 +237,7 @@ input:focus {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: var(--color2);
+    background-color: #9c90fc8c;
     border-radius: 20px;
     padding: 30px;
     box-sizing: border-box;
