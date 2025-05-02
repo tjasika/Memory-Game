@@ -209,26 +209,37 @@ input:focus {
     margin-bottom: 20px;
 }
 
-#new-btn {
+.game-btn {
     padding: 10px;
     border-radius: 15px;
+    width: 120px;
     background-color: var(--color3);
     border: none;
     color: var(--color1);
     font-family: Poppins;
+    font-weight: 600;
+}
+
+.game-btn:hover {
+    background-color: var(--color2);
+    transition: 0.2s;
+}
+
+#new-btn {
+    cursor: pointer;
 }
 
 #game-board {
     display: grid;
     grid-template-columns: repeat(8, minmax(120px, 1fr));
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     background-color: var(--color2);
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -265,7 +276,6 @@ input:focus {
 
 .card-front {
     background-color: var(--color3);
-    color: white;
 }
 
 .card-front img {
@@ -276,8 +286,6 @@ input:focus {
 }
 
 .card-back {
-    background-color: var(--cards-color);
-    color: black;
     transform: rotateY(180deg);
 }
 
