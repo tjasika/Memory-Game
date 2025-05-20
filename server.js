@@ -111,8 +111,6 @@ app.post('/login', (req, res)=> {
 			
 			if (response.length > 0) {
                 const user = response[0];
-				console.log('Data.password:', data.password);
-				console.log('User.Password:', user.Password);
                 bcrypt.compare(data.password, user.Password, (err, isMatch) => {
                     if (err) {
                         return res.render("login.ejs", { err: err.message, feedback: "" });

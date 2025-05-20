@@ -8,7 +8,7 @@ var attempts = 0;
 
 let newButton = document.getElementById('new-btn');
 newButton.addEventListener("click", function(){
-    setTimeout(function(){
+        setTimeout(function(){
         generateCards();
     }, 700)
 })
@@ -32,6 +32,7 @@ function shuffle(array){
 function generateCards() {
     var existingBoard = document.getElementById('game-board');
     attempts = 0;
+    document.getElementById('attempt-count').textContent = '0';
 
     if (existingBoard) {
         existingBoard.remove();
@@ -72,6 +73,7 @@ function generateCards() {
 
 //Creates empty cards
 function createCard(imagePath) {
+
     var card = document.createElement('div');
     card.classList.add("card");
 
@@ -117,6 +119,9 @@ function handleCardClick(card) {
 //Checks for matches
 function checkCards() {
     attempts++;
+    var finalAttempts = Math.floor(attempts/2);
+    let attemptCount = document.getElementById('attempt-count');
+    attemptCount.innerHTML = finalAttempts;
     let firstCardImg = firstCard.querySelector(".card-back img").src;
     let secondCardImg = secondCard.querySelector(".card-back img").src;
 
@@ -154,7 +159,6 @@ function checkGameEnd() {
             }
 
             gameBoard.innerHTML = "";
-            stopClock();
 
             gameBoard.classList.add("message-container");
 

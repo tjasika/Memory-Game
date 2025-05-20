@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --color1: #132436;
-    --color2: #9c90fc;
-    --color3: #f2ecec;
-    --color4: #e05a29;
+    --color1: #122C4F;
+    --color2: #191919;
+    --color3: #FBF9E4;
+    --color4: #5B88B2;
 }
 
 body {
@@ -77,7 +77,7 @@ header a {
 .text-container a {
     text-decoration: none;
     font-weight: 600;
-    color: var(--color2);
+    color: var(--color4);
 }
 
 a:hover {
@@ -100,7 +100,7 @@ a:hover {
 #play-btn:hover {
     cursor: pointer;
     transition: 0.2s;
-    background-color: var(--color2);
+    background-color: var(--color4);
 }
 
 button a {
@@ -221,7 +221,7 @@ input:focus {
 }
 
 .game-btn:hover {
-    background-color: var(--color2);
+    background-color: var(--color4);
     transition: 0.2s;
 }
 
@@ -237,7 +237,6 @@ input:focus {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #9c90fcc5;
     border-radius: 20px;
     padding: 30px;
     box-sizing: border-box;
@@ -308,7 +307,7 @@ input:focus {
     display: none;
 }
 
-#game-board.message-container {
+#game-board .message-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
