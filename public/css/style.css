@@ -313,5 +313,6 @@ input:focus {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 400px; 
+    height: 800px; 
+    margin: 0;
 }
