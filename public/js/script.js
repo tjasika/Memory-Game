@@ -161,9 +161,6 @@ function handleCardClick(card) {
 //Checks for matches
 function checkCards() {
     attempts++;
-    var finalAttempts = Math.floor(attempts/2);
-    let attemptCount = document.getElementById('attempt-count');
-    attemptCount.innerHTML = finalAttempts;
     let firstCardImg = firstCard.querySelector(".card-back img").src;
     let secondCardImg = secondCard.querySelector(".card-back img").src;
 
@@ -220,7 +217,10 @@ async function saveScore(score) {
 function checkGameEnd() {
     var unmatchedCards = document.querySelectorAll(".card:not(.matched)");
     const timeTaken = parseInt(document.getElementById("time").textContent.split(":").reduce((a, b) => 60 * a + +b));
-    let finalScore = calculateScore(attempts/2, timeTaken, 8);
+    var finalAttempts = Math.floor(attempts/2);
+    let attemptCount = document.getElementById('attempt-count');
+    attemptCount.innerHTML = finalAttempts;
+    let finalScore = calculateScore(finalAttempts/2, timeTaken, 8);
 
     if (unmatchedCards.length === 0) {
         setTimeout(async function() {
