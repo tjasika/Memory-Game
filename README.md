@@ -6,7 +6,8 @@ Built with **Node.js, HTML, CSS, JavaScript, and EJS**, this project combines cl
 ### Features
 - User authentification
 - Classic memory game logic
-- Saving and upodating score
+- Saving and updating score
+- A global scoreboard
 
 ### File setup
 I set up the project using Node.js, starting by installing the necessary modules: Express, express-session, nodemon, bcrypt, mysql2, EJS, and dotenv. I used EJS as the templating engine and placed all my .ejs files in a folder called "views". Static files like CSS and JavaScript are served from the "public" folder. I created a basic HTML structure for all my EJS templates and added simple GET routes to render each page.
