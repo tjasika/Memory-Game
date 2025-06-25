@@ -13,6 +13,7 @@ I set up the project using Node.js, starting by installing the necessary modules
 
 ### Styling
 Though visual appearance and design weren't my main priority, I decided to style my project in a coherent theme. The illustrations on the cards are from https://www.vecteezy.com/vector-art/21847416-vector-marine-life-illustration-set-isolated-on-a-white-background The color palette is from Pinterest and the font is "Poppins" from Google Fonts.
+
 ![Screenshot of the project interface](assets/screenshot1.png)
 
 ### User authentification
