@@ -316,3 +316,26 @@ input:focus {
     height: 800px; 
     margin: 0;
 }
+
+.message-container {
+    height: 400px;
+    background-color: #FBF9E4;
+    color: #122C4F;
+}
+
+.end-btn {
+    padding: 10px;
+    border-radius: 15px;
+    width: 120px;
+    background-color: var(--color1);
+    border: none;
+    color: var(--color3);
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+.end-btn:hover {
+    background-color: var(--color4);
+    transition: 0.2s;
+    cursor: pointer;
+}

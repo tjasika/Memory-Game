@@ -184,32 +184,61 @@ function checkCards() {
     }
 }
 
+function calculateScore(attempts, timeTaken, totalPairs) {
+    const baseScore = 1000;
+    const timePenalty = timeTaken * 3;
+    const attemptPenalty = (attempts - totalPairs) * 20;
+
+    return Math.max(0, baseScore - timePenalty - attemptPenalty);
+}
+
 
 //If all cards are matched it displays a message
 function checkGameEnd() {
     var unmatchedCards = document.querySelectorAll(".card:not(.matched)");
+    const timeTaken = parseInt(document.getElementById("time").textContent.split(":").reduce((a, b) => 60 * a + +b));
+    let finalScore = calculateScore(attempts/2, timeTaken, 8);
 
     if (unmatchedCards.length === 0) {
         setTimeout(function() {
-
-            var gameBoard = document.getElementById('game-board');
-            if (!gameBoard) {
-                gameBoard = document.createElement('div');
-                gameBoard.id = 'game-board';
-                document.body.insertBefore(gameBoard, document.getElementById('message-board'));
-            }
             stopClock();
+
+            const gameBoard = document.getElementById('game-board');
             gameBoard.innerHTML = "";
+            gameBoard.className = "message-container";
+            gameBoard.style.display = "flex";
 
-            gameBoard.classList.add("message-container");
+            const messageBox = document.createElement("div");
+            messageBox.classList.add("end-message");
 
-            var message = document.createElement('div');
-            message.classList.add("message");
-            
-            message.innerHTML = `<b>You finished the game in ${attempts/2} attempts.</b>`;
+            const congrats = document.createElement("h2");
+            congrats.textContent = "Congratulations!";
 
-            gameBoard.appendChild(message);
+            const attemptsInfo = document.createElement("p");
+            attemptsInfo.textContent = `You completed the game in ${attempts / 2} attempts`;
 
+            const timeInfo = document.createElement("p");
+            timeInfo.textContent = `Time taken: ${document.getElementById("time").textContent}`;
+
+            const scoreInfo = document.createElement("p");
+            scoreInfo.textContent = `Score: ${finalScore}`;
+
+            const newGameButton = document.createElement("button");
+            newGameButton.className = "end-btn";
+            newGameButton.textContent = "Play Again";
+            newGameButton.addEventListener("click", function () {
+                resetClock();
+                startClock();
+                generateCards();
+            });
+
+            messageBox.appendChild(congrats);
+            messageBox.appendChild(attemptsInfo);
+            messageBox.appendChild(timeInfo);
+            messageBox.appendChild(scoreInfo);
+            messageBox.appendChild(newGameButton);
+
+            gameBoard.appendChild(messageBox);
         }, 500);
     }
 }

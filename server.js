@@ -7,6 +7,7 @@ const mysql = require('mysql2');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
+//Database
 const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -22,7 +23,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-/* For logged in */
+//For logged in
 app.use((req, res, next) => {
     res.locals.username = req.session.loggedin ? req.session.username : null;   //makes the logged-in username a global variable
     next();
@@ -35,7 +36,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.json());                            
 app.use(express.urlencoded({ extended: true }));
 
-/* Get handlers */
+//Get Handlers
 app.get('/', (req, res)=> {
     res.render('index.ejs', {err: "", feedback: ""});
 });
@@ -56,7 +57,7 @@ app.get('/scoreboard', (req, res)=> {
     res.render('scoreboard.ejs', {err: "", feedback: ""});
 });
 
-/* Post handlers */
+//Post Handlers
 app.post('/signup', (req, res)=> {
     const data = req.body;
     if(!data.username || !data.password) {
@@ -134,7 +135,7 @@ app.post('/login', (req, res)=> {
 	);
 });
 
-
+//Log out
 app.get("/logout", (req, res) => {
     req.session.destroy((err) => {
         if (err) {
