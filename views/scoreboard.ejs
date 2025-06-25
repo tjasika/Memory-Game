@@ -11,8 +11,39 @@
             <a href="/scoreboard">Scoreboard</a>
             <a href="/login">Log In</a>
         </header>
+
         <h1>Scoreboard</h1>
-        <a href="/">Back</a>
-        <a href="/login">Log In</a>
+        <div class="links">
+            <a href="/">Back</a>
+            <a href="/login">Log In</a>
+        </div>
+        
+        <% if(err) { %>
+            <p class="error"><%= err %></p>
+        <% } else { %>
+            <table class="scoreboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>High Score</th>
+                        <th>High Score Date</th>
+                        <th>Last Played</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% topPlayers.forEach((player, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= player.Username %></td>
+                        <td><%= player.High_score %></td>
+                        <td><%= new Date(player.High_score_date).toLocaleDateString() %></td>
+                        <td><%= new Date(player.Last_played).toLocaleDateString() %></td>
+                    </tr>
+                   <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+        
     </body>
 </html>

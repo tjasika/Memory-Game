@@ -193,15 +193,37 @@ function calculateScore(attempts, timeTaken, totalPairs) {
     return Math.max(0, baseScore - timePenalty - attemptPenalty);
 }
 
+async function saveScore(score) {
+    try {
+        const response = await fetch('/savescore', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ score: score })
+        });
+        const data = await response.json();
+        if(response.ok) {
+            console.log('Score saved successfully:', data.message);
+            return data.message;
+        } else {
+            console.log('Error:', data.message);
+            return null;
+        } 
+    } catch(err) {
+        console.log('Error:', data.message);
+        return null;
+    }
+}
 
-//If all cards are matched it displays a message
+
 function checkGameEnd() {
     var unmatchedCards = document.querySelectorAll(".card:not(.matched)");
     const timeTaken = parseInt(document.getElementById("time").textContent.split(":").reduce((a, b) => 60 * a + +b));
     let finalScore = calculateScore(attempts/2, timeTaken, 8);
 
     if (unmatchedCards.length === 0) {
-        setTimeout(function() {
+        setTimeout(async function() {
             stopClock();
 
             const gameBoard = document.getElementById('game-board');
@@ -223,6 +245,18 @@ function checkGameEnd() {
 
             const scoreInfo = document.createElement("p");
             scoreInfo.textContent = `Score: ${finalScore}`;
+
+            // Save score if user is logged in
+            if (typeof loggedIn !== 'undefined' && loggedIn) {
+                const saveMessage = await saveScore(finalScore);
+                if (saveMessage) {
+                    const savedInfo = document.createElement("p");
+                    savedInfo.textContent = saveMessage;
+                    savedInfo.style.color = "green";
+                    savedInfo.style.fontWeight = "bold";
+                    messageBox.appendChild(savedInfo);
+                }
+            }
 
             const newGameButton = document.createElement("button");
             newGameButton.className = "end-btn";

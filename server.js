@@ -50,11 +50,21 @@ app.get('/signup', (req, res)=> {
 });
 
 app.get('/game', (req, res)=> {
-    res.render('game.ejs', {err: "", feedback: ""});
+    res.render('game.ejs', {err: "", feedback: "", loggedIn: req.session.loggedIn || false });
 });
 
 app.get('/scoreboard', (req, res)=> {
-    res.render('scoreboard.ejs', {err: "", feedback: ""});
+    pool.query(
+        `SELECT Username, High_score, High_score_date, Last_played
+        FROM user
+        ORDER BY High_score DESC
+        LIMIT 5`, (err, results) => {
+            if(err) {
+                return res.render('scoreboard.ejs', {err: "", feedback: "", topPlayers:[]});
+            }
+            res.render('scoreboard.ejs', {err: "", feedback: "", topPlayers: results});
+        }
+    )
 });
 
 //Post Handlers
@@ -149,18 +159,32 @@ app.post('/savescore', (req, res) => {
             }
 
             const currentHigh = result[0].High_score;
+            const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // Format for MySQL DATETIME
             
             if(score > currentHigh) {
                 pool.query(
-                    `UPDATE user SET High_score = ? WHERE ID=?`, [score, userId], (err, result) => {
+                    `UPDATE user SET High_score = ?, High_score_date = ?, Last_played = ? WHERE ID = ?`, 
+                    [score, now, now, userId], (err, updateResult) => {
                         if(err) {
+                            console.error('Database error updating high score:', err);
                             return res.status(500).json({message: "Database error"});
                         }
+                        console.log('High score updated successfully');
                         return res.json({ message: 'New high score saved!' });
                     }
                 )
             } else {
-                return res.json({ message: 'New score is not a new high score.' });
+                pool.query(
+                    `UPDATE user SET Last_played = ? WHERE ID = ?`, 
+                    [now, userId], (err) => {
+                        if(err) {
+                            console.error('Database error updating last played:', err);
+                            return res.status(500).json({message: "Database error"});
+                        }
+                        console.log('Last played updated successfully');
+                        return res.json({ message: 'Score recorded!' });
+                    }
+                )
             }
         }
     )
