@@ -12,14 +12,17 @@ I set up the project using Node.js, starting by installing the necessary modules
 
 ### Styling
 Though visual appearance and design weren't my main priority, I decided to style my project in a coherent theme. The illustrations on the cards are from https://www.vecteezy.com/vector-art/21847416-vector-marine-life-illustration-set-isolated-on-a-white-background The color palette is from Pinterest and the font is "Poppins" from Google Fonts.
+![Screenshot of the project interface](assets/screenshot1.png)
 
 ### User authentification
 For this project, I kept the user authentification simple - the players only need an unique username and a password, which are saved to the database via the POST */signup* route, and checked via the POST */login* route. The passwords are encrypted with *bcrypt*.
+![Screenshot of the project interface](assets/screenshot2.png)
 
 ### Game Logic
 The entire game logic is written in the script.js file. The cards are created using the *createCard()* function and they get assigned a random value (a random image) in the *generateCards()* function. This is achieved by storing the image paths in an array, shuffling it, and then distributing the images across the cards.
 The main logic is in the *handleCardClick()* and *checkCards()* functions, which make sure only two cards are flipped at a time and compare their values - if they match, the cards 'disappear', otherwise they flip back. 
 The function *checkGameEnd()* checks if all the cards have been matched and displays the final message: the number of attempts, time taken and of course, the score.
+![Screenshot of the project interface](assets/screenshot3.png)
 
 ### Scoreboard
 The player's score is saved to the database through a POST request to the */savescore* route, which is triggered by the asynchronous *saveScore(score)* function in script.js. A simple SQL SELECT query retrieves the player's current high score and compares it to the new score—if the new score is higher, the database is updated accordingly.
