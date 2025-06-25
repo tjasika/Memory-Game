@@ -3,6 +3,7 @@ let secondsElapsed = 0;
 let interval = null;
 const time = document.getElementById('time');
 
+//Time
 function padStart(value) {
     return String(value).padStart(2, "0"); 
 }

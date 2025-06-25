@@ -323,6 +323,10 @@ input:focus {
     color: #122C4F;
 }
 
+.end-message {
+    width: 100%;
+}
+
 .end-btn {
     padding: 10px;
     border-radius: 15px;

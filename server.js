@@ -135,6 +135,37 @@ app.post('/login', (req, res)=> {
 	);
 });
 
+app.post('/savescore', (req, res) => {
+    if(!req.session.loggedin || !req.session.userId) {
+        return res.status(401).json({ message: 'User not logged in' });
+    }
+    const { score } = req.body;
+    const userId = req.session.userId;
+    
+    pool.query(
+        `SELECT High_score FROM user WHERE ID = ?`, [userId], (err, result) => {
+            if(err) {
+                return res.status(500).json({message: "Database error"});
+            }
+
+            const currentHigh = result[0].High_score;
+            
+            if(score > currentHigh) {
+                pool.query(
+                    `UPDATE user SET High_score = ? WHERE ID=?`, [score, userId], (err, result) => {
+                        if(err) {
+                            return res.status(500).json({message: "Database error"});
+                        }
+                        return res.json({ message: 'New high score saved!' });
+                    }
+                )
+            } else {
+                return res.json({ message: 'New score is not a new high score.' });
+            }
+        }
+    )
+});
+
 //Log out
 app.get("/logout", (req, res) => {
     req.session.destroy((err) => {
