@@ -9,13 +9,21 @@
     <body>
         <header>
             <a href="/scoreboard">Scoreboard</a>
-            <a href="/login">Log In</a>
+            <% if (username) { %>
+                <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/login">Log In</a>
+            <% } %>
         </header>
 
         <h1>Scoreboard</h1>
         <div class="links">
             <a href="/">Back</a>
-            <a href="/login">Log In</a>
+            <% if (username) { %>
+                <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/login">Log In</a>
+            <% } %>
         </div>
         
         <% if(err) { %>
