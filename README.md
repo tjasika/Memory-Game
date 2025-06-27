@@ -21,6 +21,14 @@ Though visual appearance and design weren't my main priority, I decided to style
 For this project, I kept the user authentification simple - the players only need an unique username and a password, which are saved to the database via the POST */signup* route, and checked via the POST */login* route. The passwords are encrypted with *bcrypt*.
 ![Screenshot of the project interface](assets/screenshot2.png)
 
+### The Database
+I created my database in MySQL Workbench and it only has a single table - 'user'. It stores the following information about the players:
+- username
+- password (crypted)
+- high score
+- the date, when the high score was achieved
+- the date, when the player last played the game
+
 ### Game Logic
 The entire game logic is written in the script.js file. The cards are created using the *createCard()* function and they get assigned a random value (a random image) in the *generateCards()* function. This is achieved by storing the image paths in an array, shuffling it, and then distributing the images across the cards.
 The main logic is in the *handleCardClick()* and *checkCards()* functions, which make sure only two cards are flipped at a time and compare their values - if they match, the cards 'disappear', otherwise they flip back. 
