@@ -343,3 +343,36 @@ input:focus {
     transition: 0.2s;
     cursor: pointer;
 }
+
+/*Scoreboard*/
+.scoreboard-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.scoreboard-table thead {
+    background-color: var(--color4);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.scoreboard-table th, .scoreboard-table td {
+    padding: 1rem;
+    text-align: center;
+}
+
+.scoreboard-table tbody tr {
+    background-color: #f4f6f8;
+}
+
+.scoreboard-table td {
+    color: #333;
+    font-size: 0.95rem;
+}
