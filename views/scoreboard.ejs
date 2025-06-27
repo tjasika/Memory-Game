@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>
-            <a href="/scoreboard">Scoreboard</a>
+            <a href="/">Back</a>
             <% if (username) { %>
                 <a href="/logout">Log Out</a>
             <% } else { %>
@@ -17,14 +17,6 @@
         </header>
 
         <h1>Scoreboard</h1>
-        <div class="links">
-            <a href="/">Back</a>
-            <% if (username) { %>
-                <a href="/logout">Log Out</a>
-            <% } else { %>
-                <a href="/login">Log In</a>
-            <% } %>
-        </div>
         
         <% if(err) { %>
             <p class="error"><%= err %></p>
