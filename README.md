@@ -31,3 +31,7 @@ The function *checkGameEnd()* checks if all the cards have been matched and disp
 The player's score is saved to the database through a POST request to the */savescore* route, which is triggered by the asynchronous *saveScore(score)* function in script.js. A simple SQL SELECT query retrieves the player's current high score and compares it to the new score—if the new score is higher, the database is updated accordingly.
 The *user* table also stores the date when the player achieved their high score, as well as the date they last played. Both of these values are updated via the same /savescore route.
 The scoreboard, rendered in *scoreboard.ejs*, displays the top five players from the user table (excluding any sensitive data like passwords), ranked by their High_score.
+
+![Screenshot of the project interface](assets/screenshot4.png)
+(I only had two players in the database at the time)
+
